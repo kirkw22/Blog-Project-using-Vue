@@ -17,6 +17,16 @@
                 
 
             }
+
+            #blogPostCreation{
+                border: 2px solid black;
+                padding: 10px;
+                margin
+            }
+
+            #blogPostCreation > *{
+                margin: 10px;
+            }
         </style>
     </head>
     <body>
@@ -28,6 +38,15 @@
                 v-bind:blogpost='post'
             >
             </blog-post>
+        </div>
+
+        <div id='blogPostCreation'>
+            <h2>Post New Blog</h2>
+            <input v-model='title'><br>
+            <input v-model='username'><br>
+            <input v-model='date'><br>
+            <input v-model='content'><br>
+            <button v-on:click='publishPost'>Publish Post</button>
         </div>
 
         <script>
@@ -45,9 +64,34 @@
                 el: '#blogPosts',
                 data: {
                     posts: [
-                        {title: 'First Post', username: 'Kirk', date: 'June 17,2019', content: 'This is the content of my very first post.'},
-                        {title: 'Second Post', username: 'Kirk', date: 'June 18,2019', content: 'This is the content of my second post.'},
+                       
                     ]
+                }
+            })
+
+            var postBlog = new Vue({
+                el: '#blogPostCreation',
+                data: {
+                    title: '',
+                    username: '',
+                    date: '',
+                    content: '',
+                },
+                methods: {
+                    publishPost: function(){
+                        var postData = {
+                            title: this.title,
+                            username: this.username,
+                            date: this.date,
+                            content: this.content
+                        }
+
+                        blogVue.posts.push(postData);
+                        this.title = ''
+                        this.username = ''
+                        this.date = ''
+                        this.content = ''
+                    }
                 }
             })
         </script>
