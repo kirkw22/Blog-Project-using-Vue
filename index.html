@@ -3,8 +3,53 @@
     <head>
         <title> Blog Site </title>
         <script src='https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js'></script>
+        <style>
+            html,body{
+                padding: 10px;
+                clear: both;
+                float: left;
+            }
+
+            #singleBlogPost{
+                border: 2px solid blue;
+                padding: 10px;
+                margin-bottom: 50px;
+                
+
+            }
+        </style>
     </head>
     <body>
         <h1>Welcom to my Blog Site!</h1>
+
+        <div id='blogPosts'>
+            <blog-post
+                v-for='post in posts'
+                v-bind:blogpost='post'
+            >
+            </blog-post>
+        </div>
+
+        <script>
+            Vue.component('blog-post', {
+                props: ['blogpost'],
+                template: `<div id='singleBlogPost'>
+                                    <h2>{{ blogpost.title }}</h2>
+                                    <h3>{{ blogpost.username }}</h3>
+                                    <h4>{{ blogpost.date }}</h4>
+                                    <p>{{ blogpost.content }}</p>
+                            </div>`,
+            })
+
+            var blogVue = new Vue({
+                el: '#blogPosts',
+                data: {
+                    posts: [
+                        {title: 'First Post', username: 'Kirk', date: 'June 17,2019', content: 'This is the content of my very first post.'},
+                        {title: 'Second Post', username: 'Kirk', date: 'June 18,2019', content: 'This is the content of my second post.'},
+                    ]
+                }
+            })
+        </script>
     </body>
 </html>
