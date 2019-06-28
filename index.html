@@ -42,9 +42,13 @@
 
         <div id='blogPostCreation'>
             <h2>Post New Blog</h2>
-            <input v-model='title'><br>
+           <div><label>Blog Title</label>
+            <input v-model='title'></div> <br>
+            <label>Blogger's Name</label>
             <input v-model='username'><br>
+            <label>Blog Date</label>
             <input v-model='date'><br>
+            <label>Blog Content</label>
             <input v-model='content'><br>
             <button v-on:click='publishPost'>Publish Post</button>
         </div>
