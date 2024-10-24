@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kirkw22/Final_Project#readme",
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^3.0.0"
   }
 }
